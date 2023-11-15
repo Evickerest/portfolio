@@ -2,12 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
-    <h2>This is my website!</h2>
-    <p>Epic!</p>
-    <p>Expect crazy stuff here</p>
+    <div class="container">
+        <div class="button-wrapper">
+            <button id="new-game1" onclick="createBoard(9,9,10)">Easy</button>
+            <button id="new-game2" onclick="createBoard(16,16,40)">Moderate</button>
+            <button id="new-game3" onclick="createBoard(30,16,99)">Severe</button>
+            <button id="new-game4" onclick="createBoard(30,20,145)">Chaos</button>
+        </div>
+        <div class="board"></div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
