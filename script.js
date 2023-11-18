@@ -8,6 +8,8 @@ let tilesClicked = 0;
 
 const COLORS = ["blue","green","red","darkblue","brown","cyan","black","grey"];
 
+const TILE_COLORS = ["#a4ffa4","#61fd6d","white","aliceblue"];
+
 // prevents right click and middle click on document
 document.addEventListener('contextmenu', event => event.preventDefault());
 document.body.onmousedown = function(e) { if (e.button === 1) return false; }
@@ -24,32 +26,36 @@ class Tile {
         this.clicked = false;
         this.flag = false;
         this.element = element;
+        this.openColor = null;
     }
 
     clear(){
         if( this.flag || this.clicked) return;
 
-        this.element.style.backgroundColor = "white";
+        this.clearDOMTile();
 
-        let content = '';
-
-        if(this.bomb){
-            this.element.style.backgroundColor = "#f8484d";
-            content = "\u{1F4A3}";
+        if( this.bomb ){
             GameOver = true;
             gameLost();
-        } else if( this.number != 0){
-            content = this.number;
-        } 
+        } else {
+            this.clicked = true;
+            tilesClicked++;
 
-        this.element.textContent = content;
-    
-        this.element.style.color = COLORS[this.number-1];
-        this.clicked = true;
+            if( this.number == 0) this.clearZeroes();
+        }
+    }
 
-        tilesClicked++;
+    clearDOMTile(){
+        if( this.bomb ){
+            this.element.style.backgroundColor = "#f8484d";
+        } else {
+            this.element.style.backgroundColor = this.openColor;
+            this.element.style.color = COLORS[this.number-1];
+            if( this.number != 0){
+                this.element.textContent = this.number;
+            }
 
-        if( this.number == 0) this.clearZeroes(); 
+        }
     }
 
     getAdjTiles(){
@@ -66,7 +72,7 @@ class Tile {
 
     flagTile(){  
         if( this.clicked ) return;
-        this.element.textContent = this.flag ? "" : "\u{1F6A9}";
+        this.element.textContent = this.flag ? "" : /*"\u{1F6A9}"*/ "F";
         this.flag = !this.flag;
     }
 
@@ -109,6 +115,10 @@ function createBoard(w,h,b){
             element.onmouseup = click;
             board[j][i] = new Tile(j,i,element);
             element.tile = board[j][i];
+            
+            element.style.backgroundColor = TILE_COLORS[ (i + j)%2 ];
+            board[j][i].openColor = TILE_COLORS[ (i+j) % 2 + 2];
+
             fragment.appendChild(element);
         }
         document.querySelector(".board").appendChild( fragment );
@@ -175,12 +185,13 @@ function gameLost(){
     board.forEach(column => {
         column.forEach( tile => {
             if( tile.bomb){
-            if( !tile.flag){
-                tile.element.textContent = "\u{1F4A3}";
-            } else {
-                tile.element.style.backgroundColor = "yellow";
+                if( !tile.flag){
+                    // tile.element.textContent = "\u{1F4A3}";
+                    tile.element.textContent = "X";
+                } else {
+                    tile.element.style.backgroundColor = "yellow";
+                }
             }
-        }
         });
     });
     alert("You have lost")
