@@ -16,11 +16,11 @@ body {
     width: 35px;
     height: 35px;
     background-color: #e0dfdf;
-    border: 1px solid #777;
-    border-radius: 1rem;
+    /* border: 1px solid #777; */
+    /* border-radius: 2px; */
     text-align: center;
     line-height:35px;
-    font-size: 25px;
+    font-size: 40px;
 }
 
 .tile:hover {
@@ -31,7 +31,9 @@ body {
     display: grid;
     grid-template-columns: repeat(var(--grid-width),35px);
     border: 2px solid black;
-    background-color: #00ffe9;
+    /* background-color: #00ffe9; */
+    /* background-color: #658280; */
+    background-color: white;
 }
 
 .button-wrapper {
@@ -52,4 +54,17 @@ body {
     flex-direction: column;
     background-color: lightblue;
     padding: 2rem;
+}
+
+.settings-menu {
+    display: none;
+    border: 3px solid black;
+    background-color: white;
+    position: absolute;
+    left: auto;  
+    max-width: 300px;
+    margin-top: 60px;
+
+
+
 }
