@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="classic.css">
+    
+</head>
+<body>
+    <a href="../">Back</a>
+    <div class="container">
+        <div class="button-wrapper">
+            <button id="new-game1" onclick="createBoard()">New Game</button>
+            <button class="settings">⚙️</button>
+        </div>
+        <dialog class="settings-menu">
+            <h2>Game Settings:</h2>
+            <div class="radio-buttons-grid">
+                    <div class="game-heading" id="Width">Width</div>
+                    <div class="game-heading">Height</div>
+                    <div class="game-heading">Mines</div>
+                <div class="radio-input">
+                    <input type="radio" name="game" value="Easy">Easy</input>
+                </div>
+                    <div class="game-number">9</div>
+                    <div class="game-number">9</div>
+                    <div class="game-number">10</div>
+                <div class="radio-input">
+                    <input type="radio" name="game" value="Moderate">Moderate</input>
+                </div>
+                    <div class="game-number">16</div>
+                    <div class="game-number">16</div>
+                    <div class="game-number">40</div>
+                <div class="radio-input">
+                    <input type="radio" name="game" value="Severe">Severe</input>
+                </div>
+                    <div class="game-number">30</div>
+                    <div class="game-number">16</div>
+                    <div class="game-number">99</div>
+                <div class="radio-input">
+                    <input type="radio" name="game" value="Chaos">Chaos</input>
+                </div>
+                    <div class="game-number">30</div>
+                    <div class="game-number">20</div>
+                    <div class="game-number">145</div>
+                <div class="radio-input">
+                    <input type="radio" name="game" value="Custom">Custom</input>
+                </div>
+                    <input id="custom-width" type="number" value="100"></input>
+                    <input id="custom-height" type="number" value="100"></input>
+                    <input id="custom-mines" type="number" value="100"></input>
+            </div>
+            <h2>Tile Colors:</h2>
+            <div class="color-picker-container">
+                <div class="color-picker">
+                    <label for="dark-closed">Primary Closed:</label>
+                    <input type="color" id="dark-closed" value="#a4ffa4">
+                </div>
+                <div class="color-picker">
+                    <label for="light-closed">Secondary Closed:</label>
+                    <input type="color" id="light-closed" value="#61fd6d">
+                </div>
+                <div class="color-picker">
+                    <label for="dark-open">Primary Open:</label>
+                    <input type="color" id="dark-open" value="#ffffff">
+                </div>
+                <div class="color-picker">
+                    <label for="light-open">Seconary Open:</label>
+                    <input type="color" id="light-open" value="#F0F8FF">
+                </div>
+            </div>
+            <h2>Mine Colors (min/max):</h2>
+            <div class="color-min-max-container">
+                <div class="color-min-max">
+                    <label>Hue:</label>
+                    <input id="min-hue" type="number" class="number" min="0" max="0" value="0">
+                    <input id="max-hue" type="number" class="number" min="0" max="360" value="360">
+                </div>
+                <div class="color-min-max">
+                    <label>Saturation:</label>
+                    <input id="min-sat" type="number" class="number" min="0" max="0" value="90">
+                    <input id="max-sat" type="number" class="number" min="0" max="100" value="100">
+                </div>
+                <div class="color-min-max">
+                    <label>Lightness:</label>
+                    <input id="min-lig" type="number" class="number" min="0" max="0" value="50">
+                    <input id="max-lig" type="number" class="number" min="0" max="100" value="70">
+                </div>
+                <div class="color-picker">
+                    <label for="mine-color">Mine Color:</label>
+                    <input type="color" id="mine-color" value="#000000">
+                </div>
+            </div>
+            <h2>Flag Color:</h2>
+            <div class="color-picker-container">
+                <div class="color-picker">
+                    <label for="flag-bgcolor">Flag Background Color:</label>
+                    <input type="color" id="flag-bgcolor" value="#ffff00">
+                </div>
+                <div class="color-picker">
+                    <label for="flag-color">Flag Color:</label>
+                    <input type="color" id="flag-color" value="#000000">
+                </div>
+            </div>
+            <div class="button-container">
+                <button id="close-modal">Close</button>
+                <button id="reset-modal">Reset</button>
+                <button id="submit-modal">Submit</button>
+            </div>
+        </dialog>
+        <div class="board"></div>
+    </div>
+    <script type="text/javascript" src="classic.js"></script>
+</body>
+</html>
